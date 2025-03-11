@@ -1,182 +1,80 @@
-# Full-Stack FastAPI and React Template
+# Full Stack Flask Template
 
-A modern, production-ready template for building full-stack applications with FastAPI and React. This template provides a modular structure with Docker support for both development and production environments.
+A modern full-stack web application template using Flask for the backend API and React for the frontend.
 
 ## Features
 
-- 🚀 FastAPI backend for high-performance API development
-- ⚛️ React frontend with modern tooling
-- 🐳 Docker and Docker Compose support for development
-- 📦 Separate production-ready Dockerfiles for cloud deployment
-- 📁 Modular project structure for both frontend and backend
-- 🔍 Example TODO list CRUD implementation
-- 📝 Auto-generated API documentation (Swagger/OpenAPI)
-- ✨ Clean, maintainable architecture
-- 🔒 Type safety with Pydantic models and TypeScript
+- **Backend**: Flask with ASGI support (via Uvicorn)
+- **Frontend**: React with TypeScript
+- **API**: RESTful API design
+- **Development**: Hot-reload for both frontend and backend
 
-## Quick Start with Docker (Development)
+## Getting Started
 
 ### Prerequisites
 
-- Docker
-- Docker Compose
+- Python 3.8+
+- Node.js 14+
+- npm or yarn
 
-### Development Setup
+### Setup
 
-1. Clone the template:
+1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/yourusername/full-stack-fastapi-template.git
-   cd full-stack-fastapi-template
-   ```
+```bash
+git clone <your-repo-url>
+cd full-stack-flask-template
+```
 
-2. Start the development environment:
+2. Set up the backend:
 
-   ```bash
-   docker-compose up
-   ```
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+pip install -r requirements.txt
+```
 
-3. Access the applications:
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:8000
-   - API Documentation: http://localhost:8000/docs
+3. Set up the frontend:
 
-## Manual Setup (Without Docker)
+```bash
+cd frontend
+npm install
+```
 
-### Backend Setup
+### Running the Application
 
-1. Navigate to the backend directory:
+1. Start the backend (from project root):
 
-   ```bash
-   cd backend
-   ```
+```bash
+python backend/app.py
+```
 
-2. Create and activate virtual environment:
+The API will be available at http://localhost:8000
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: .\venv\Scripts\activate
-   ```
+2. Start the frontend (in a new terminal):
 
-3. Install dependencies:
+```bash
+cd frontend
+npm start
+```
 
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Run the backend:
-   ```bash
-   uvicorn main:app --reload
-   ```
-
-### Frontend Setup
-
-1. Navigate to the frontend directory:
-
-   ```bash
-   cd frontend
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+The web application will be available at http://localhost:3000
 
 ## Project Structure
 
 ```
-full-stack-fastapi-template/
-├── docker-compose.yml          # Development Docker Compose configuration
+.
 ├── backend/
-│   ├── Dockerfile             # Production backend Dockerfile
-│   ├── Dockerfile.development # Development backend Dockerfile
-│   ├── main.py               # Application entry point
-│   ├── requirements.txt      # Python dependencies
-│   ├── models/               # Data models
-│   └── routes/               # API routes
+│   ├── app.py          # Main Flask application
+│   └── todo_routes.py  # API routes
 ├── frontend/
-│   ├── Dockerfile           # Production frontend Dockerfile
-│   ├── Dockerfile.development # Development frontend Dockerfile
-│   ├── package.json
 │   ├── src/
-│   │   ├── components/      # React components
-│   │   ├── pages/          # Page components
-│   │   └── services/       # API services
-│   └── public/             # Static assets
+│   │   ├── components/
+│   │   └── App.tsx
+│   └── package.json
+└── requirements.txt    # Python dependencies
 ```
-
-## Production Deployment
-
-The template includes separate Dockerfiles for production deployment of both frontend and backend services. This allows for independent scaling and deployment of each service in cloud environments.
-
-### Building Production Images
-
-1. Backend:
-
-   ```bash
-   docker build -t myapp-backend ./backend
-   ```
-
-2. Frontend:
-   ```bash
-   docker build -t myapp-frontend ./frontend
-   ```
-
-### Environment Variables
-
-- Backend:
-
-  - `DATABASE_URL`: Database connection string
-  - `SECRET_KEY`: Application secret key
-  - Additional environment variables as needed
-
-- Frontend:
-  - `REACT_APP_API_URL`: Backend API URL
-  - Additional environment variables as needed
-
-## API Endpoints
-
-The template includes a complete TODO list API:
-
-- `GET /api/todos` - List all todos
-- `POST /api/todos` - Create a todo
-- `GET /api/todos/{id}` - Get a specific todo
-- `PUT /api/todos/{id}` - Update a todo
-- `DELETE /api/todos/{id}` - Delete a todo
-
-## Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
-
-## Development Guidelines
-
-### Backend
-
-- Follow PEP 8 guidelines
-- Use type hints
-- Write docstrings for functions and classes
-- Implement unit tests for new features
-
-### Frontend
-
-- Follow React best practices
-- Use TypeScript for type safety
-- Implement component tests
-- Follow the established project structure
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Getting Help
-
-- Check the [FastAPI documentation](https://fastapi.tiangolo.com/)
-- Visit the [React documentation](https://reactjs.org/)
-- Open an issue for bugs
-- Start a discussion for questions
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
